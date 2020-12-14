@@ -3,6 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon/auth_screen.dart';
 import 'package:hackathon/home_screen.dart';
+import 'package:hackathon/models/auth_model.dart';
+import 'package:hackathon/widgets/home_page.dart';
+import 'package:provider/provider.dart';
 
 
 void main() async{
@@ -14,22 +17,27 @@ void main() async{
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return ChangeNotifierProvider(
+      create: (context)=>HomeModel(),
+          child: MaterialApp(
+        
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        debugShowCheckedModeBanner: false,
+        
+        home: StreamBuilder(
+              stream: FirebaseAuth.instance.authStateChanges(),
+              builder: (ctx,userSnapshot) {
+                if(userSnapshot.hasData){
+                  return HomePage();
+                }
+                return AuthScreen();
+              },
+            ),
       ),
-      debugShowCheckedModeBanner: false,
-      home: StreamBuilder(
-            stream: FirebaseAuth.instance.authStateChanges(),
-            builder: (ctx,userSnapshot) {
-              if(userSnapshot.hasData){
-                return HomeScreen();
-              }
-              return AuthScreen();
-            },
-          ),
     );
   }
 }

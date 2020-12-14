@@ -84,35 +84,61 @@ class _HomeScreenState extends State<HomeScreen> {
               return Dialog(
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    color: Colors.white
-                  ),
+                      borderRadius: BorderRadius.circular(40),
+                      color: Colors.white),
                   height: 320,
-                  
                   width: MediaQuery.of(context).size.width - 15,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Center(child: Image.asset('assets/images/emergency.png',height: 150,)),
-                      Center(child: Text('Emergency Alert',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.black),),),
-                      SizedBox(height: 10,),
-                      Center(child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:20.0),
-                        child: Text('This will alert police services that you need help.',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.black),textAlign: TextAlign.center,),
-                      ),),
-                      SizedBox(height: 36,),
+                      Center(
+                          child: Image.asset(
+                        'assets/images/emergency.png',
+                        height: 150,
+                      )),
+                      Center(
+                        child: Text(
+                          'Emergency Alert',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.black),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: Text(
+                            'This will alert police services that you need help.',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: Colors.black),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 36,
+                      ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:18.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 18.0),
                         child: MaterialButton(
                           height: 42,
-                          onPressed: () {
-
-                          },
+                          onPressed: () {},
                           color: Colors.red,
-                          child: Center(child: Text('YES',style: TextStyle(color: Colors.white,fontSize: 20),),),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12)
+                          child: Center(
+                            child: Text(
+                              'YES',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            ),
                           ),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)),
                         ),
                       )
                     ],
