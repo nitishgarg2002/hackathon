@@ -27,16 +27,16 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         debugShowCheckedModeBanner: false,
-        
-        home: StreamBuilder(
-              stream: FirebaseAuth.instance.authStateChanges(),
-              builder: (ctx,userSnapshot) {
-                if(userSnapshot.hasData){
-                  return HomeScreen();
-                }
-                return HomePage();
-              },
-            ),
+        home: HomePage(),
+        // home: StreamBuilder(
+        //       stream: FirebaseAuth.instance.authStateChanges(),
+        //       builder: (ctx,userSnapshot) {
+        //         if(userSnapshot.hasData){
+        //           return HomeScreen();
+        //         }
+        //         return HomePage();
+        //       },
+        //     ),
       ),
     );
   }
