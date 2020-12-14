@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hackathon/home_screen.dart';
 
 class CustomRegister extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class CustomRegister extends StatefulWidget {
 }
 
 class _CustomRegisterState extends State<CustomRegister> {
-   final _auth = FirebaseAuth.instance;
+  final _auth = FirebaseAuth.instance;
   UserCredential userCredential;
   final _key = GlobalKey<FormState>();
   TextEditingController _textEditingController;
@@ -70,7 +71,7 @@ class _CustomRegisterState extends State<CustomRegister> {
                   margin: EdgeInsets.fromLTRB(20, 5, 20, 0),
                   child: TextFormField(
                     validator: (value) {
-                      if(value.isEmpty){
+                      if (value.isEmpty) {
                         return 'Please enter your name';
                       }
                       return null;
@@ -93,7 +94,7 @@ class _CustomRegisterState extends State<CustomRegister> {
                           borderRadius: BorderRadius.circular(40)),
                     ),
                     style: TextStyle(fontSize: 17, color: Colors.black),
-                    obscureText: true,
+                    
                   ),
                 ),
                 SizedBox(
@@ -158,7 +159,6 @@ class _CustomRegisterState extends State<CustomRegister> {
                 SizedBox(
                   height: 10.0,
                 ),
-                
                 Container(
                     width: 350,
                     height: 60,
@@ -176,41 +176,50 @@ class _CustomRegisterState extends State<CustomRegister> {
                               style: GoogleFonts.varelaRound(fontSize: 17),
                             ),
                           ),
-                          onPressed: () async{
+                          onPressed: () async {
                             try {
-                            userCredential =  await _auth.createUserWithEmailAndPassword(email: email, password: password,);
-     
+                              userCredential =
+                                  await _auth.createUserWithEmailAndPassword(
+                                email: email,
+                                password: password,
+                              );
 
-       FirebaseFirestore.instance
-      .collection('users').doc(userCredential.user.uid).set({
-          'name': name,
-         'email': email,
-         'password': password,
-      
-       });
-                            } on  PlatformException catch (err) {
-       var message = 'An error occured, please check your credentials!';
+                              FirebaseFirestore.instance
+                                  .collection('users')
+                                  .doc(userCredential.user.uid)
+                                  .set({
+                                'name': name,
+                                'email': email,
+                                'password': password,
+                              });
+                              Navigator.pushReplacement(context, MaterialPageRoute(
+                                builder: (context) => HomeScreen(),
+                              ));
+                            } on PlatformException catch (err) {
+                              var message =
+                                  'An error occured, please check your credentials!';
 
-       if(err.message!= null) {
-         message = err.message;
-       }
+                              if (err.message != null) {
+                                message = err.message;
+                              }
 
-       Scaffold.of(context).showSnackBar(
-         SnackBar(
-          content: Text(message), 
-          backgroundColor: Theme.of(context).errorColor,
-         ),
-         );
-         
-     } on FirebaseAuthException catch (err) {
-       print(err);
-       Scaffold.of(context).showSnackBar(SnackBar(
-         content: Text(err.message,textAlign: TextAlign.center,),
-         backgroundColor: Theme.of(context).errorColor,
-       ));
-       
-                          
-     }}),
+                              Scaffold.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(message),
+                                  backgroundColor: Theme.of(context).errorColor,
+                                ),
+                              );
+                            } on FirebaseAuthException catch (err) {
+                              print(err);
+                              Scaffold.of(context).showSnackBar(SnackBar(
+                                content: Text(
+                                  err.message,
+                                  textAlign: TextAlign.center,
+                                ),
+                                backgroundColor: Theme.of(context).errorColor,
+                              ));
+                            }
+                          }),
                     )),
                 Container(
                   margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
