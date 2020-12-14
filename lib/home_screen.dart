@@ -23,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -54,23 +55,72 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 10,
             ),
-            Row(
-              children: [
-                Text(
-                  'Period Tracker: ',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.black),
+            SingleChildScrollView(
+              child: Row(
+                children: [
+                  Text(
+                    'Period Tracker: ',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.black),
+                  ),
+                  Text(
+                    'You had periods on this day',
+                    style: TextStyle(
+                        color: Colors.pinkAccent,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w800),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Container(
+                width: double.infinity,
+                color: Colors.white,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Period Tracker!',
+                      style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'click the button to start tracker',
+                      style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 100.0),
+                      child: OutlineButton(
+                        splashColor: Colors.pink,
+                        highlightedBorderColor: Colors.pink[700],
+                        borderSide:
+                            BorderSide(color: Colors.pink[700], width: 2),
+                        onPressed: () {},
+                        child: Text(
+                          'Add',
+                          style: TextStyle(color: Colors.pink),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-                Text(
-                  'You had periods on this day',
-                  style: TextStyle(
-                      color: Colors.pinkAccent,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w800),
-                )
-              ],
+              ),
             )
           ],
         ),
