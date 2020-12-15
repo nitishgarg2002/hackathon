@@ -94,7 +94,6 @@ class _CustomRegisterState extends State<CustomRegister> {
                           borderRadius: BorderRadius.circular(40)),
                     ),
                     style: TextStyle(fontSize: 17, color: Colors.black),
-                    
                   ),
                 ),
                 SizedBox(
@@ -192,9 +191,11 @@ class _CustomRegisterState extends State<CustomRegister> {
                                 'email': email,
                                 'password': password,
                               });
-                              Navigator.pushReplacement(context, MaterialPageRoute(
-                                builder: (context) => HomeScreen(),
-                              ));
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => HomeScreen(),
+                                  ));
                             } on PlatformException catch (err) {
                               var message =
                                   'An error occured, please check your credentials!';

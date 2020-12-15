@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -111,7 +112,21 @@ class _HomeScreenState extends State<HomeScreen> {
                         highlightedBorderColor: Colors.pink[700],
                         borderSide:
                             BorderSide(color: Colors.pink[700], width: 2),
-                        onPressed: () {},
+                        onPressed: () {
+                          Alert(
+                            context: context,
+                            type: AlertType.info,
+                            title: 'Add to my calender',
+                            desc: 'Use this feature when you are on your periods so that it can track them more efficiently',
+                            buttons: [
+                              DialogButton(
+                                highlightColor: Colors.pink,
+                                child: Text('Done'),
+                                onPressed: () {},
+                              )
+                            ]
+                          ).show();
+                        },
                         child: Text(
                           'Add',
                           style: TextStyle(color: Colors.pink),
