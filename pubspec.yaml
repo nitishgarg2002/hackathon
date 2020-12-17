@@ -34,10 +34,11 @@ dependencies:
   cloud_firestore: "^0.14.0+2"
   table_calendar: ^2.3.2
   rflutter_alert: ^1.1.0
+  geolocator: ^6.1.13
   
   google_fonts: 
   provider: 
-
+  http: 
 dev_dependencies:
   flutter_test:
     sdk: flutter

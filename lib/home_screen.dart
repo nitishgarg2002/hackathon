@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:hackathon/widgets/add_location.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -114,18 +116,18 @@ class _HomeScreenState extends State<HomeScreen> {
                             BorderSide(color: Colors.pink[700], width: 2),
                         onPressed: () {
                           Alert(
-                            context: context,
-                            type: AlertType.info,
-                            title: 'Add to my calender',
-                            desc: 'Use this feature when you are on your periods so that it can track them more efficiently',
-                            buttons: [
-                              DialogButton(
-                                highlightColor: Colors.pink,
-                                child: Text('Done'),
-                                onPressed: () {},
-                              )
-                            ]
-                          ).show();
+                              context: context,
+                              type: AlertType.info,
+                              title: 'Add to my calender',
+                              desc:
+                                  'Use this feature when you are on your periods so that it can track them more efficiently',
+                              buttons: [
+                                DialogButton(
+                                  highlightColor: Colors.pink,
+                                  child: Text('Done'),
+                                  onPressed: () {},
+                                )
+                              ]).show();
                         },
                         child: Text(
                           'Add',
@@ -193,7 +195,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 18.0),
                         child: MaterialButton(
                           height: 42,
-                          onPressed: () {},
+                          onPressed: () async {
+                            Position position =
+                                await Geolocator.getCurrentPosition();
+                                setState(() {
+                            addLocation(Location(
+                              latitude: position.latitude,
+                              longitude: position.longitude,
+                            ));
+                            });
+                            print(position);
+                          },
                           color: Colors.red,
                           child: Center(
                             child: Text(

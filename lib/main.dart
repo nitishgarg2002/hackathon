@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:hackathon/auth_screen.dart';
 import 'package:hackathon/home_screen.dart';
 import 'package:hackathon/models/auth_model.dart';
 import 'package:hackathon/widgets/home_page.dart';
