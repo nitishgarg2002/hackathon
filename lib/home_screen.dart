@@ -198,11 +198,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           onPressed: () async {
                             Position position =
                                 await Geolocator.getCurrentPosition();
-                                setState(() {
-                            addLocation(Location(
-                              latitude: position.latitude,
-                              longitude: position.longitude,
-                            ));
+                            setState(() {
+                              addLocation(Location(
+                                latitude: position.latitude,
+                                longitude: position.longitude,
+                              ));
                             });
                             print(position);
                           },
@@ -226,6 +226,9 @@ class _HomeScreenState extends State<HomeScreen> {
           );
         },
       ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   currentIndex: 0,
+      // ),
     );
   }
 }

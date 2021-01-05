@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'package:geolocator/geolocator.dart';
-import 'package:hackathon/models/location.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 
